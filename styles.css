@@ -29,7 +29,7 @@ body {
 
 .name-block h1 {
   font-size: 32px;
-  color: #6c8c3a; /* soft green similar to sample */
+  color: #6c8c3a;
   margin-bottom: 4px;
 }
 
@@ -48,7 +48,7 @@ body {
   color: black;
 }
 
-/* Photo with hover swap */
+/* Photo */
 .photo-wrapper {
   position: relative;
   width: 140px;
@@ -67,17 +67,17 @@ body {
   transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
 }
 
-/* Default (poker) image visible */
+/* Default image*/
 .base-photo {
   opacity: 1;
 }
 
-/* Hover (smile) image hidden initially */
+/* Hover image*/
 .hover-photo {
   opacity: 0;
 }
 
-/* On hover, fade poker out and smile in */
+/* On hover image*/
 .photo-wrapper:hover .base-photo {
   opacity: 0;
   transform: scale(1.03);
@@ -126,7 +126,7 @@ body {
   font-size: 14px;
 }
 
-/* Projects (reusing job styles) */
+/* Work history */
 .job {
   margin-top: 10px;
 }
@@ -162,9 +162,8 @@ body {
 /* Achievements */
 .achievements-list {
   list-style: disc;
-  padding-left: 20px;
-  margin-top: 6px;
-  font-size: 14px;
+  padding-left: 18px;
+  font-size: 13px;
   line-height: 1.4;
 }
 
