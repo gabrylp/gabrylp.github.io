@@ -58,34 +58,12 @@ body {
   border: 2px solid #6c8c3a;
 }
 
-.photo-wrapper .photo {
+.photo {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-}
-
-/* Default image*/
-.base-photo {
-  opacity: 1;
-}
-
-/* Hover image*/
-.hover-photo {
-  opacity: 0;
-}
-
-/* On hover image*/
-.photo-wrapper:hover .base-photo {
-  opacity: 0;
-  transform: scale(1.03);
-}
-
-.photo-wrapper:hover .hover-photo {
-  opacity: 1;
-  transform: scale(1.03);
 }
 
 /* Section dividers */
