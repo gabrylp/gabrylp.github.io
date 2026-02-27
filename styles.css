@@ -1,0 +1,212 @@
+/* Base page */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Georgia", "Times New Roman", serif;
+  background: #f5f5f5;
+  padding: 40px 0;
+}
+
+.resume {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 32px 40px 40px;
+  border: 1px solid #ddd;
+}
+
+/* Header */
+.resume-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.name-block h1 {
+  font-size: 32px;
+  color: #6c8c3a; /* soft green similar to sample */
+  margin-bottom: 4px;
+}
+
+.location {
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.contact {
+  font-size: 14px;
+}
+
+.gitprofile {
+  font-size: 14px;
+  text-decoration: underline;
+  color: black;
+}
+
+/* Photo with hover swap */
+.photo-wrapper {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #6c8c3a;
+}
+
+.photo-wrapper .photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+/* Default (poker) image visible */
+.base-photo {
+  opacity: 1;
+}
+
+/* Hover (smile) image hidden initially */
+.hover-photo {
+  opacity: 0;
+}
+
+/* On hover, fade poker out and smile in */
+.photo-wrapper:hover .base-photo {
+  opacity: 0;
+  transform: scale(1.03);
+}
+
+.photo-wrapper:hover .hover-photo {
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+/* Section dividers */
+.section-divider {
+  border: none;
+  border-top: 1px solid #999;
+  margin: 18px 0;
+}
+
+/* Sections */
+.section {
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: 18px;
+  color: #6c8c3a;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.section p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Skills */
+.skills-grid {
+  display: flex;
+  justify-content: space-around;
+  gap: 40px;
+  margin-top: 8px;
+}
+
+.skills-grid ul {
+  list-style: disc;
+  padding-left: 20px;
+  font-size: 14px;
+}
+
+/* Projects (reusing job styles) */
+.job {
+  margin-top: 10px;
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.job-title {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.job-meta {
+  font-size: 13px;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.job-points {
+  list-style: disc;
+  padding-left: 20px;
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Achievements */
+.achievements-list {
+  list-style: disc;
+  padding-left: 20px;
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Education */
+.education-item {
+  margin-top: 8px;
+}
+
+.edu-degree {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.edu-meta {
+  font-size: 13px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .resume {
+    padding: 24px 20px 28px;
+  }
+
+  .resume-header {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+
+  .photo-wrapper {
+    align-self: center;
+  }
+
+  .job-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .job-meta {
+    text-align: left;
+  }
+}
