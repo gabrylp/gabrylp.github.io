@@ -31,6 +31,8 @@ body {
   font-size: 32px;
   color: #6c8c3a;
   margin-bottom: 6px;
+  /* min height so the layout doesn't collapse during typewriter */
+  min-height: 40px;
 }
 
 .location,
@@ -79,13 +81,8 @@ body {
   transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
 }
 
-.base-photo {
-  opacity: 1;
-}
-
-.hover-photo {
-  opacity: 0;
-}
+.base-photo { opacity: 1; }
+.hover-photo { opacity: 0; }
 
 .photo-wrapper:hover .base-photo {
   opacity: 0;
@@ -114,11 +111,33 @@ body {
   color: #6c8c3a;
   text-align: center;
   margin-bottom: 10px;
+  /* scroll fade-in states */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.title-hidden {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.title-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .section p {
   font-size: 14px;
   line-height: 1.5;
+}
+
+/* little hint text under section headers */
+.tech-hint {
+  text-align: center;
+  font-size: 11px;
+  color: #aaa;
+  margin-bottom: 8px;
+  font-style: italic;
+  letter-spacing: 0.3px;
 }
 
 /* Soft Skills */
@@ -133,6 +152,21 @@ body {
   list-style: disc;
   padding-left: 20px;
   font-size: 14px;
+}
+
+/* wiggle animation for soft skill items */
+@keyframes wiggle {
+  0%   { transform: rotate(0deg); }
+  20%  { transform: rotate(-5deg); }
+  40%  { transform: rotate(5deg); }
+  60%  { transform: rotate(-3deg); }
+  80%  { transform: rotate(3deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.skill-wiggle {
+  display: inline-block;
+  animation: wiggle 0.45s ease;
 }
 
 /* Tech Stack */
@@ -151,10 +185,46 @@ body {
   gap: 4px;
   font-size: 12px;
   color: #333;
+  position: relative; /* so quip floats above it */
+  transition: transform 0.1s ease;
 }
 
 .tech-item i {
   font-size: 28px;
+}
+
+/* bounce keyframe for clicking tech icons */
+@keyframes techBounce {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.35) translateY(-6px); }
+  60%  { transform: scale(0.95) translateY(2px); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+.tech-bounce {
+  animation: techBounce 0.35s ease;
+}
+
+/* the little floating quip that pops up */
+.tech-quip {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  font-size: 10px;
+  padding: 3px 7px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: quipPop 0.2s ease;
+  z-index: 10;
+}
+
+@keyframes quipPop {
+  from { opacity: 0; transform: translateX(-50%) translateY(4px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 
 /* Projects & Work Experience */
@@ -192,12 +262,22 @@ body {
   line-height: 1.4;
 }
 
-/* Achievements */
+/* Achievements — highlight on hover so they feel clickable */
 .achievements-list {
   list-style: disc;
   padding-left: 18px;
   font-size: 14px;
   line-height: 1.6;
+}
+
+.achievements-list li {
+  border-radius: 3px;
+  padding: 1px 4px;
+  transition: background 0.15s ease;
+}
+
+.achievements-list li:hover {
+  background: #f0f5e8;
 }
 
 /* Education */
@@ -281,4 +361,18 @@ body {
   .tech-stack {
     gap: 14px 18px;
   }
+}
+
+.achievement-quip {
+  display: inline-block;
+  margin-left: 10px;
+  background: #333;
+  color: #fff;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-style: normal;
+  white-space: nowrap;
+  animation: quipPop 0.2s ease;
+  vertical-align: middle;
 }
