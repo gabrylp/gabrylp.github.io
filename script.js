@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // --- typewriter on the name ---
-  // grabs the h1, wipes it, retypes it letter by letter
+  // -- typewriter --
   const nameEl = document.querySelector(".name-block h1");
   if (nameEl) {
     const fullName = nameEl.textContent.trim();
@@ -16,7 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
     type();
   }
 
-   const quips = [
+  // -- tech stack --
+  const quips = [
     "v*be coding", "adapt adapt adapt", "still learning tbh",
     "emerging tech", "used it once, counts", "momentum engineer",
     "peak tool", "can't live without it", "built diff"
@@ -24,14 +24,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll(".tech-item").forEach(item => {
     item.style.cursor = "pointer";
-
     item.addEventListener("click", () => {
-      // bounce animation
       item.classList.remove("tech-bounce");
-      void item.offsetWidth; // reset trick
+      void item.offsetWidth;
       item.classList.add("tech-bounce");
 
-      // show a random quip above the icon
       const existing = item.querySelector(".tech-quip");
       if (existing) existing.remove();
 
@@ -44,34 +41,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- soft skill items wiggle on hover ---
+  // -- soft skills --
   document.querySelectorAll(".skills-grid li").forEach(li => {
-    li.addEventListener("mouseenter", () => {
-      li.classList.add("skill-wiggle");
-    });
-    li.addEventListener("animationend", () => {
-      li.classList.remove("skill-wiggle");
-    });
+    li.addEventListener("mouseenter", () => li.classList.add("skill-wiggle"));
+    li.addEventListener("animationend", () => li.classList.remove("skill-wiggle"));
   });
 
-  // --- achievements: quips + confetti on click ---
-  // each achievement gets its own personal quip, because they deserve it
+  // -- achievements --
   const achievementQuips = [
-    "the first time was so nice, so we had to do it twice. see you in 2027 🏆",  // CESAFI 2026
-    "made it to usc's main web page 🔥",                           // CESAFI 2025
-    "home court advantage? nah, just built different at USC 💪",                  // USC RoboCon
-    "secondplacerphobic🥉",                                            // ROBOQUEST 3rd
-    "podium finish. we take those 🥉",                             // Summer Cup 3rd
+    "the first time was so nice, so we had to do it twice. see you in 2027 🏆",
+    "made it to usc's main web page 🔥",
+    "home court advantage? nah, just built different at USC 💪",
+    "secondplacerphobic🥉",
+    "podium finish. we take those 🥉",
   ];
 
   document.querySelectorAll(".achievements-list li").forEach((li, index) => {
     li.style.cursor = "pointer";
-
     li.addEventListener("click", (e) => {
-      // confetti goes brr
       spawnConfetti(e.clientX, e.clientY);
 
-      // show the quip
       const existing = li.querySelector(".achievement-quip");
       if (existing) existing.remove();
 
@@ -84,14 +73,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- scroll fade-in for section titles ---
-  // nothing fancy, just opacity + slight slide up
+  // -- scroll fade-in --
   const titles = document.querySelectorAll(".section-title");
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("title-visible");
-        observer.unobserve(entry.target); // only do it once
+        observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.3 });
@@ -103,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-// confetti burst — spawns tiny colored squares that fall and fade
+// -- confetti --
 function spawnConfetti(x, y) {
   const canvas = document.createElement("canvas");
   canvas.style.position = "fixed";
@@ -136,7 +124,7 @@ function spawnConfetti(x, y) {
     pieces.forEach(p => {
       p.x += p.vx;
       p.y += p.vy;
-      p.vy += 0.25; // gravity
+      p.vy += 0.25;
       p.alpha -= 0.022;
       p.rot += 0.08;
       if (p.alpha > 0) {
